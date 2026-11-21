@@ -1,0 +1,4 @@
+orders_dq:
+  target: dev
+  outputs:
+    dev: {type: duckdb, path: orders.duckdb, threads: 2}

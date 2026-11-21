@@ -1,0 +1,10 @@
+name: orders_dq
+version: "1.0"
+profile: orders_dq
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+models:
+  orders_dq:
+    staging: {+materialized: view}
+    marts: {+materialized: table}

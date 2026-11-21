@@ -1,0 +1,20 @@
+version: 2
+models:
+  - name: stg_orders
+    columns:
+      - name: order_id
+        tests: [not_null]
+      - name: channel
+        tests: [{accepted_values: {values: [web, app, store]}}]
+  - name: fct_orders
+    columns:
+      - name: order_id
+        tests: [unique, not_null]
+      - name: channel_key
+        tests: [{relationships: {to: ref('dim_channel'), field: channel_key}}]
+      - name: country_key
+        tests: [{relationships: {to: ref('dim_country'), field: country_key}}]
+  - name: dq_by_channel
+    columns:
+      - name: channel
+        tests: [unique]
